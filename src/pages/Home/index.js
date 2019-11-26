@@ -1,15 +1,15 @@
 import React from 'react';
-import { Text, ScrollView } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import { Container, CardWrapper, CardRow } from './styles';
 import Card from '../../components/Card';
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <Container>
       <CardWrapper>
         <CardRow>
-          <Card />
+          <Card onPress={() => navigation.navigate('EstudoDeCasoListScreen')} />
           <Card />
         </CardRow>
         <CardRow>

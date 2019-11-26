@@ -5,10 +5,10 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
 import Home from './pages/Home';
+import EstudoDeCasoList from './pages/EstudoDeCasoList';
 
 const GlobalNavigationOptions = {
   headerStyle: {
-    backgroundColor: 'rgb(112, 30, 177)',
     height: StatusBar.currentHeight,
   },
   headerTintColor: '#fff',
@@ -48,10 +48,12 @@ const AppStack = createStackNavigator(
         },
       }
     ),
+    EstudoDeCasoListScreen: EstudoDeCasoList,
   },
 
   {
     defaultNavigationOptions: GlobalNavigationOptions,
+    headerLayoutPreset: 'center',
   }
 );
 
