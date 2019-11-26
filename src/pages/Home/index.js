@@ -1,8 +1,34 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 
-// import { Container } from './styles';
+import { Container, CardWrapper, CardRow } from './styles';
+import Card from '../../components/Card';
 
 export default function Home() {
-  return <View />;
+  return (
+    <Container>
+      <CardWrapper>
+        <CardRow>
+          <Card />
+          <Card />
+        </CardRow>
+        <CardRow>
+          <Card />
+          <Card />
+        </CardRow>
+        <CardRow>
+          <Card />
+          <Card />
+        </CardRow>
+        <CardRow>
+          <Card />
+          <Card />
+        </CardRow>
+        <CardRow>
+          <Card />
+          <Card />
+        </CardRow>
+      </CardWrapper>
+    </Container>
+  );
 }
