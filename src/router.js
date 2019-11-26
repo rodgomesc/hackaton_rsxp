@@ -2,12 +2,12 @@ import React from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import history from "./services/history";
 
-import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 
 export default function Routes() {
   return (
     <Router history={history}>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Landing} />
     </Router>
   );
 }
