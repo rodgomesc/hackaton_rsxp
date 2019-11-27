@@ -15,15 +15,18 @@ import {
   ListCounter,
   ListContentTitle,
   ListContentDuration,
+  Thumbnail,
 } from './styles';
 
 import api from '../../services/api';
 
-import { Thumbnail } from 'react-native-thumbnail-video';
-
 export default function EstudoDeCasoList({ navigation }) {
   const [audios, setAudios] = useState();
   const [videoEmbed, setVideoEmbed] = useState();
+  const [body, setBody] = useState();
+  const [companyName, setCompanyName] = useState();
+  const [author, setAuthor] = useState();
+  const [coverUrl, setCoverUrl] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -33,6 +36,10 @@ export default function EstudoDeCasoList({ navigation }) {
 
         setAudios(response.data.audios);
         setVideoEmbed(response.data.videoUrl);
+        setBody(response.data.body);
+        setCoverUrl(response.data.coverUrl);
+        setCompanyName(response.data.company);
+        setAuthor(response.data.author);
       } catch (error) {
         alert(error);
       }
@@ -77,17 +84,14 @@ export default function EstudoDeCasoList({ navigation }) {
 
       <InfoWrapper>
         <InfoTextWrapper>
-          <InfoTitle>
-            Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum
-            dolor
-          </InfoTitle>
-          <InfoDescription>Description Here</InfoDescription>
+          <InfoTitle>{body}</InfoTitle>
+          {/* <InfoDescription>Description Here</InfoDescription> */}
         </InfoTextWrapper>
 
         <Thumbnail
-          url="https://www.youtube.com/watch?v=lgj3D5-jJ74"
-          showPlayIcon={false}
-          style={{ width: 100, height: 104 }}
+          source={{
+            uri: `https://sejadev.nyc3.digitaloceanspaces.com/${coverUrl}`,
+          }}
         />
       </InfoWrapper>
       {audios && (

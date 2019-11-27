@@ -7,11 +7,11 @@ export const Container = styled.View`
 `;
 
 export const InfoWrapper = styled.View`
+  margin-left: 15px;
   flex-direction: row;
   width: 100px;
-  border: 1px solid green;
   position: relative;
-  margin-top: 244px;
+  margin-top: 24px;
   width: ${Dimensions.get('window').width - 110};
 `;
 
@@ -55,4 +55,12 @@ export const ListContentTitle = styled.Text`
 export const ListContentDuration = styled.Text`
   color: rgba(255, 255, 255, 0.4);
   margin-right: 10px;
+`;
+
+export const Thumbnail = styled.Image.attrs({
+  resizeMode: 'cover',
+})`
+  height: 80px;
+  width: 80px;
+  margin-left: 15px;
 `;
