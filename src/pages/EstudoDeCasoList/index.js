@@ -38,7 +38,18 @@ export default function EstudoDeCasoList() {
     fetchData();
   }, []);
 
-  async function handleSoundPlay(audioUrl) {
+  async function handleSoundPlay(pressedItemId, audioUrl) {
+    const setFalseAll = await audios.map(item => ({
+      ...item,
+      playing: null,
+    }));
+    setAudios(setFalseAll);
+
+    const currentPlayingStatus = await audios.map(item =>
+      item.id === pressedItemId ? { ...item, playing: true } : item
+    );
+    setAudios(currentPlayingStatus);
+
     try {
       SoundPlayer.playUrl(
         `https://sejadev.nyc3.digitaloceanspaces.com/${audioUrl}`
@@ -90,12 +101,21 @@ export default function EstudoDeCasoList() {
               <ListCounter>{index + 1}</ListCounter>
               <ListContentTitle>{item.title}</ListContentTitle>
               <ListContentDuration>0:00</ListContentDuration>
-              <Icon
-                name="play-circle"
-                size={30}
-                color="#fff"
-                onPress={() => handleSoundPlay(item.audioUrl)}
-              />
+              {item.playing ? (
+                <Icon
+                  name="pause-circle"
+                  size={30}
+                  color="#fff"
+                  onPress={() => handleSoundPlay(item.id, item.audioUrl)}
+                />
+              ) : (
+                <Icon
+                  name="play-circle"
+                  size={30}
+                  color="#fff"
+                  onPress={() => handleSoundPlay(item.id, item.audioUrl)}
+                />
+              )}
             </ListItem>
           )}
           keyExtractor={item => item.id}
