@@ -6,6 +6,7 @@ import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
 import Home from './pages/Home';
 import EstudoDeCasoList from './pages/EstudoDeCasoList';
+import Vagas from './pages/Vagas';
 
 const GlobalNavigationOptions = {
   headerStyle: {
@@ -24,21 +25,11 @@ const AppStack = createStackNavigator(
           screen: Home,
         },
         VAGAS: {
-          screen: Home,
-        },
-        'ÁREA DE ATUAÇÃO': {
-          screen: Home,
-        },
-        'OUTRAS ÁREAS': {
-          screen: Home,
-        },
-        COMUNIDADE: {
-          screen: Home,
+          screen: Vagas,
         },
       },
       {
         tabBarOptions: {
-          scrollEnabled: true,
           style: {
             backgroundColor: '#333',
           },

@@ -29,7 +29,7 @@ export const List = styled.FlatList`
   color: #fff;
 `;
 
-export const ListItem = styled.View`
+export const ListItem = styled.TouchableOpacity`
   background: #232323;
   color: #fff;
   flex-direction: row;
