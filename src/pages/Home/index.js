@@ -30,20 +30,41 @@ export default function Home({ navigation }) {
   return (
     <Container>
       <VideoCardWrapper>
-        <VideoCard showDetails={false} />
+        <VideoCard
+          showDetails={false}
+          url="https://www.youtube.com/embed/1Ia29mi8rUI"
+        />
       </VideoCardWrapper>
-      <CardWrapperTitle>Outros casos de uso</CardWrapperTitle>
+      <CardWrapperTitle>Casos de uso</CardWrapperTitle>
 
       {cardsData && (
         <CardWrapper>
           <CardRow>
             <Card
               cardImage={`https://sejadev.nyc3.digitaloceanspaces.com/images/shawee-img.jpg`}
-              onPress={() => navigation.navigate('EstudoDeCasoListScreen')}
+              onPress={() =>
+                navigation.navigate('EstudoDeCasoListScreen', { id: 1 })
+              }
             />
             <Card
-              cardImage={`https://sejadev.nyc3.digitaloceanspaces.com/images/hotmart-img.jpg"`}
-              onPress={() => navigation.navigate('EstudoDeCasoListScreen')}
+              cardImage={`https://sejadev.nyc3.digitaloceanspaces.com/images/hotmart-img.jpg`}
+              onPress={() =>
+                navigation.navigate('EstudoDeCasoListScreen', { id: 2 })
+              }
+            />
+          </CardRow>
+          <CardRow>
+            <Card
+              cardImage={`https://sejadev.nyc3.digitaloceanspaces.com/images/linkapi-img.jpg`}
+              onPress={() =>
+                navigation.navigate('EstudoDeCasoListScreen', { id: 3 })
+              }
+            />
+            <Card
+              cardImage={`https://sejadev.nyc3.digitaloceanspaces.com/images/zup-img.jpg`}
+              onPress={() =>
+                navigation.navigate('EstudoDeCasoListScreen', { id: 4 })
+              }
             />
           </CardRow>
         </CardWrapper>

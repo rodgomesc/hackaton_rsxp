@@ -1,28 +1,17 @@
 import React from 'react';
-import YouTube from 'react-native-youtube';
 
 import {
   Container,
   VideoFooter,
   VideoFooterTitle,
   VideoFooterSubTitle,
+  YoutubeVideo,
 } from './styles';
 
-export default function VideoCard({ showDetails }) {
+export default function VideoCard({ showDetails, url }) {
   return (
     <Container>
-      <YouTube
-        apiKey="AIzaSyCHobmIRMrGgd5mdTpZaRFdhdGxZCZ-uSQ"
-        videoId="yAW1bw-9czs" // The YouTube video ID
-        //play // control playback of video with true/false
-        fullscreen={false} // control whether the video should play in fullscreen or inline
-        loop // control whether the video should loop when ended
-        //onReady={e => console.log({ isReady: true })}
-        //onChangeState={e => console.log({ status: e.state })}
-        //onChangeQuality={e => console.log({ quality: e.quality })}
-        onError={e => console.log({ error: e.error })}
-        style={{ alignSelf: 'stretch', height: 300 }}
-      />
+      <YoutubeVideo source={{ uri: url }} />
       <VideoFooter showDetails={showDetails}>
         <VideoFooterTitle> Ep01 - Entrevista Motivacional</VideoFooterTitle>
         <VideoFooterSubTitle>Diego Fernandes</VideoFooterSubTitle>

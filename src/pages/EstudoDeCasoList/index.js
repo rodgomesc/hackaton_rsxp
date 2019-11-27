@@ -21,16 +21,18 @@ import api from '../../services/api';
 
 import { Thumbnail } from 'react-native-thumbnail-video';
 
-export default function EstudoDeCasoList() {
+export default function EstudoDeCasoList({ navigation }) {
   const [audios, setAudios] = useState();
+  const [videoEmbed, setVideoEmbed] = useState();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await api.get(`/cases/${1}`);
+        const identity = navigation.getParam('id');
+        const response = await api.get(`/cases/${identity}`);
 
         setAudios(response.data.audios);
-        console.log(response.data.audios);
+        setVideoEmbed(response.data.videoUrl);
       } catch (error) {
         alert(error);
       }
@@ -71,7 +73,8 @@ export default function EstudoDeCasoList() {
 
   return (
     <Container>
-      <VideoCard />
+      {videoEmbed && <VideoCard url={videoEmbed} />}
+
       <InfoWrapper>
         <InfoTextWrapper>
           <InfoTitle>
