@@ -6,6 +6,7 @@ export const Container = styled.View`
 `;
 
 export const VideoFooter = styled.View`
+  display: ${props => (props.showDetails ? 'flex' : 'none')};
   border: 1px solid red;
 `;
 export const VideoFooterTitle = styled.Text`

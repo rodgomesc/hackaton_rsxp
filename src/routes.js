@@ -50,7 +50,6 @@ const AppStack = createStackNavigator(
     ),
     EstudoDeCasoListScreen: EstudoDeCasoList,
   },
-
   {
     defaultNavigationOptions: GlobalNavigationOptions,
     headerLayoutPreset: 'center',

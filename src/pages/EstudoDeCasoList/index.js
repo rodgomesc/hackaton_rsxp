@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar, Text } from 'react-native';
-import playIcon from '../../assets/imgs/playicon.png';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import VideoCard from '../../components/VideoCard';
+import SoundPlayer from 'react-native-sound-player';
 
 import {
   Container,
@@ -12,10 +13,12 @@ import {
   List,
   ListItem,
   ListCounter,
-  PlayIcon,
+  ListContentTitle,
+  ListContentDuration,
 } from './styles';
 
 import api from '../../services/api';
+
 import { Thumbnail } from 'react-native-thumbnail-video';
 
 export default function EstudoDeCasoList() {
@@ -23,11 +26,37 @@ export default function EstudoDeCasoList() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await api.get(`/cases/${1}`);
-      setAudios(response.data.audios);
+      try {
+        const response = await api.get(`/cases/${1}`);
+
+        setAudios(response.data.audios);
+        console.log(response.data.audios);
+      } catch (error) {
+        alert(error);
+      }
     }
     fetchData();
-  });
+  }, []);
+
+  async function handleSoundPlay(audioUrl) {
+    try {
+      SoundPlayer.playUrl(
+        `https://sejadev.nyc3.digitaloceanspaces.com/${audioUrl}`
+      );
+    } catch (e) {
+      console.log(`cannot play the sound file`, e);
+    }
+  }
+
+  async function getInfoSound() {
+    // You need the keyword `async`
+    try {
+      const info = await SoundPlayer.getInfo(); // Also, you need to await this because it is async
+      console.log('getInfo', info); // {duration: 12.416, currentTime: 7.691}
+    } catch (e) {
+      console.log('There is no song playing', e);
+    }
+  }
 
   return (
     <Container>
@@ -59,9 +88,14 @@ export default function EstudoDeCasoList() {
             //onSelect={onSelect}
             >
               <ListCounter>{index + 1}</ListCounter>
-              <Text>{item.title}</Text>
-              <Text>0:00</Text>
-              <PlayIcon source={playIcon} />
+              <ListContentTitle>{item.title}</ListContentTitle>
+              <ListContentDuration>0:00</ListContentDuration>
+              <Icon
+                name="play-circle"
+                size={30}
+                color="#fff"
+                onPress={() => handleSoundPlay(item.audioUrl)}
+              />
             </ListItem>
           )}
           keyExtractor={item => item.id}

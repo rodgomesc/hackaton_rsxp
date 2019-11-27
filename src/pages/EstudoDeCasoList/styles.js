@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+
 export const Container = styled.View`
   flex: 1;
   background: #232323;
@@ -32,15 +33,26 @@ export const ListItem = styled.View`
   background: #232323;
   color: #fff;
   flex-direction: row;
-  border-bottom-color: red;
-  border-bottom-width: 2;
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-bottom-width: 1;
+  padding-right: 15px;
+  align-items: center;
+  height: 60px;
 `;
 
-export const ListCounter = styled.Text``;
+export const ListCounter = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 18;
+  margin-left: 15px;
+`;
 
-export const PlayIcon = styled.Image.attrs({
-  resizeMode: 'cover',
-})`
-  height: 24px;
-  width: 24px;
+export const ListContentTitle = styled.Text`
+  color: rgba(255, 255, 255, 0.8);
+  flex: 1;
+  margin-left: 15px;
+`;
+export const ListContentDuration = styled.Text`
+  color: rgba(255, 255, 255, 0.4);
+  margin-right: 10px;
 `;
